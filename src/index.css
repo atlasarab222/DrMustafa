@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", ui-sans-serif, system-ui, sans-serif;
+  --color-primary: #52613e;
+  --color-primary-container: #6a7a55;
+  --color-secondary: #576341;
+  --color-background: #fbf9f4;
+  --color-surface: #f5f3ee;
+  --color-surface-dim: #dbdad5;
+  --color-on-surface: #1b1c19;
+  --color-on-primary: #ffffff;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-on-surface);
+  -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
+}

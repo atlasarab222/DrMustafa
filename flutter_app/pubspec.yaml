@@ -1,0 +1,21 @@
+name: dr_mustafa_clinic
+description: A high-end clinic application for Dr. Mustafa Al-Rafai.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  supabase_flutter: ^2.6.0
+  google_fonts: ^6.1.0
+  url_launcher: ^6.2.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true

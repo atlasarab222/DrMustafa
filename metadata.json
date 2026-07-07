@@ -1,0 +1,6 @@
+{
+  "name": "Dr. Mustafa Al-Rafai Dental Clinic",
+  "description": "A high-end dental clinic application for Dr. Mustafa Alrifaie, featuring a botanical aesthetic, case studies, service menu, and contact functionality.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

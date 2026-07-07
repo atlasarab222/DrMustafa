@@ -1,0 +1,52 @@
+name: Build Android Release APK
+
+on:
+  push:
+    branches: [ "main", "master" ]
+  pull_request:
+    branches: [ "main", "master" ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Compile Flutter to APK
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v3
+
+      - name: Setup Java JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Setup Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+
+      - name: Prepare Flutter Project & Dependencies
+        run: |
+          # Generate complete Flutter workspace with up-to-date Gradle files
+          flutter create --org com.mustafa.clinic --project-name dr_mustafa_clinic temp_app
+          
+          # Inject our custom premium Arabic pages and services
+          rm -rf temp_app/lib
+          cp -r flutter_app/lib temp_app/lib
+          cp flutter_app/pubspec.yaml temp_app/pubspec.yaml
+          
+          # Fetch pub packages
+          cd temp_app
+          flutter pub get
+
+      - name: Build Production Release APK
+        run: |
+          cd temp_app
+          flutter build apk --release --no-pub
+
+      - name: Publish Built APK as Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: dr-mustafa-clinic-apk
+          path: temp_app/build/app/outputs/flutter-apk/app-release.apk
